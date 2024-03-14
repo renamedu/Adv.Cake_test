@@ -42,20 +42,8 @@ function strReverse($string) {
 	for ($i = 0; $i < count($string); $i++) {
 		if ($format_array[$i] === 1 ) {
 			$string[$i] = strtoupper($string[$i]);
-		} elseif ($format_array[$i] === "." ) {
-			$string[$i] = ".";
-		} elseif ($format_array[$i] === "," ) {
-			$string[$i] = ",";
-		} elseif ($format_array[$i] === "-" ) {
-			$string[$i] = "-";
-		} elseif ($format_array[$i] === "`" ) {
-			$string[$i] = "`";
-		} elseif ($format_array[$i] === "'" ) {
-			$string[$i] = "'";
-		} elseif ($format_array[$i] === "?" ) {
-			$string[$i] = "?";
-		} elseif ($format_array[$i] === "!" ) {
-			$string[$i] = "!";
+		} elseif (preg_match("/[,.`!?\'-]+/", $format_array[$i])) {
+			$string[$i] = $format_array[$i];
 		}
 	}
     $string = implode($string);
